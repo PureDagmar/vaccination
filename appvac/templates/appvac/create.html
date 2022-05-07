@@ -1,0 +1,13 @@
+{% extends "appvac/base.html" %}
+{% block title %}Register a Child{% endblock %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<h1>MYCHILD BIRTH RECORD</h1>
+<form method="post" action="/create/" class="form-group">
+    {% csrf_token %}
+    {{ form|crispy }}
+    <button type="submit" name="save" class="btn btn-success">Register a Child</button>
+</form>
+{% endblock %}
+

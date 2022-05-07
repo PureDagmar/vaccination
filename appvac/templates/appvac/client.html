@@ -1,0 +1,32 @@
+{% extends "appvac/base.html" %}
+{% block title %}Client Page{% endblock %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+    <h1>{{ls.name}}</h1>
+        <div>
+            <p>Date of Birth: <b>{{ls.birth_date}}</b></p>
+            <p>Mother Name: {{ls.mother_name}}</p>
+            <p>Contacts: phone number {{ls.phone}}, address - {{ls.compound}}, {{ls.town}}</p>
+        </div>
+    <form method="post" action="#" class="form-group">
+        {% csrf_token %}
+        {{ form|crispy }}
+            {% for vaccine in ls.vaccine_set.all %}
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <div class="input-group-text">
+                    {% if vaccine.complete == True %}
+                        <input type="checkbox" value="clicked" name="{{vaccine.text}}" checked>
+                    {% else %}
+                        <input type="checkbox" value="clicked" name="{{vaccine.text}}">
+                    {% endif %}
+                    </div>
+                </div>
+                <input type="text" value="{{vaccine.text}}" class="form-control">
+            </div>
+            {% endfor %}
+        <button type="submit" name="save" value="save" class="btn btn-success">Save</button>
+    </form>
+{% endblock %}
+

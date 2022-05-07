@@ -1,0 +1,9 @@
+{% extends "appvac/base.html" %}
+{% block title %}List of kids{% endblock %}
+
+{% block content %}
+    <h1>REGISTERED KIDS</h1>
+    {% for client in clients %}
+        <h6><a href="{{client.id}}">{{client.name}}</a></h6>
+    {% endfor %}
+{% endblock %}

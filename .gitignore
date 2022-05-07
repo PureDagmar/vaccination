@@ -1,0 +1,6 @@
+*.pyc
+*~
+__pycache__
+myvac
+/static
+.DS_Store
